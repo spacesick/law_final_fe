@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <AppHeader v-if="token" />
+  <div class="min-w-screen min-h-screen">
+    <AppHeader :token-exist="token" />
     <nuxt />
   </div>
 </template>
@@ -19,5 +19,3 @@ export default {
   },
 }
 </script>
-
-<style></style>
