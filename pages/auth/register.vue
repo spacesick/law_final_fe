@@ -67,7 +67,7 @@ export default {
     ...mapActions({
       setToken: 'auth/setToken',
     }),
-    submitForm: function () {
+    submitForm: async function () {
       if (
         !validateEmail(this.email) ||
         !this.username ||
@@ -79,7 +79,16 @@ export default {
         return false
       }
 
-      this.setToken('test-token')
+      const res = await this.$axios.$post('http://34.28.48.143/api/register/', {
+        email: this.email,
+        username: this.username,
+        password: this.password,
+        first_name: '',
+        last_name: '',
+      })
+      // console.log(res)
+
+      this.setToken(res.token.access)
       this.$router.push('/')
     },
   },

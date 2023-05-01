@@ -43,7 +43,6 @@
                 >About</nuxt-link
               >
             </li>
-            <li>{{ token }}</li>
             <li>
               <button @click="setToken">mutate</button>
             </li>

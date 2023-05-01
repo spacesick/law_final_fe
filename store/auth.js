@@ -20,9 +20,9 @@ export const actions = {
   fetchToken() {
     return 'token-test'
   },
-  setToken({ commit }) {
-    localStorage.setItem(tokenKey, 'filled')
-    commit('SET_TOKEN', 'filled')
+  setToken({ commit }, payload) {
+    localStorage.setItem(tokenKey, payload)
+    commit('SET_TOKEN', payload)
   },
   removeToken({ commit }) {
     localStorage.removeItem(tokenKey)
