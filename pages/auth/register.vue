@@ -1,22 +1,23 @@
 <template>
   <div class="flex items-center justify-center w-full p-2">
     <form
-      class="block p-6 bg-white border border-gray-200 rounded-lg shadow w-1/2"
+      class="block p-6 bg-white border border-gray-200 rounded-lg shadow md:w-96 w-3/4"
     >
-      <h1 class="my-5 font-bold text-lg text-blue-700">REGISTER ACCOUNT</h1>
-      <div class="flex flex-col gap-4">
+      <h1 class="font-bold text-lg text-blue-700 text-xl">Create Account</h1>
+      <div class="flex flex-col gap-4 mt-5">
         <CInput v-model="email" v-bind="inputData[0]" />
         <CInput v-model="username" v-bind="inputData[1]" />
         <CInput v-model="password" v-bind="inputData[2]" />
         <CInput v-model="confirmPassword" v-bind="inputData[3]" />
       </div>
-      <div class="flex justify-end">
-        <button
-          class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-          @click.prevent="submitForm"
-        >
-          Submit
-        </button>
+      <button
+        class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center"
+        @click.prevent="submitForm"
+      >
+        Submit
+      </button>
+      <div class="flex justify-center text-sm mt-3">
+        <span>Sudah punya akun? <router-link :to="{ path: '/auth/login'}" class="text-blue-600 hover:text-blue-700">Login</router-link></span>
       </div>
     </form>
   </div>
@@ -25,11 +26,25 @@
 <script>
 import { mapActions } from 'vuex'
 import CInput from '~/components/auth/CInput.vue'
+import { parseJwt } from '~/store/auth'
 import validateEmail from '~/utils/validateEmail'
 
 export default {
   components: {
     CInput,
+  },
+  beforeRouteEnter (to, from, next) {
+    if (localStorage.getItem('lawToken')) {
+      const jwtPayload = parseJwt(localStorage.getItem('lawToken'));
+      if (jwtPayload.exp < Date.now()/1000) {
+        // token expired
+        localStorage.removeItem('lawToken');
+        next()
+      }
+      next('/');
+    } else {
+      next();
+    }
   },
   data() {
     return {
