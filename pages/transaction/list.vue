@@ -3,7 +3,7 @@
     <div class="text-center">
       <h1 class="font-semibold text-lg">Transaction List</h1>
       <p class="bg-red-300 font-light p-2 my-[12px] text-left" v-if="error">{{ error }}</p>
-      <table class="content-table">
+      <table class="content-table" v-if="transactionTable">
         <thead>
           <tr>
             <th>ID</th>
@@ -33,6 +33,7 @@
           </tr>
         </tbody>
       </table>
+      <p class="bg-red-300 font-light p-2 my-[12px] text-left" v-else>Could not fetch list of transactions.</p>
     </div>
   </div>
 </template>
@@ -41,7 +42,7 @@
 import axios from 'axios'
 
 export default {
-  props: ['error'],
+  props: ['error', 'transactionTable'],
   data() {
     return {
       transactions: [] // init data
@@ -63,7 +64,10 @@ export default {
     fetch(process.env.TRANSACTION_ENDPOINT)  // change to api endpoint (ext ip)
     .then(response => response.json())
     .then(data => {
+      this.transactionTable = true
       this.transactions = data
+    }).catch(() => {
+      this.transactionTable = false
     })
   },
   methods: {
