@@ -7,7 +7,7 @@
                 <nuxt-link
                     :to="'/car/'+product.id"
                     class="max-w-[32rem] flex-1 flex flex-col justify-center items-center">
-                    <img v-if="product.image_url" :src="product.image_url" class="m-auto max-h-[18rem] max-w-[32rem] h-full w-fit object-cover rounded-lg">
+                    <img v-if="product.image_url" :src="product.image_url" class="m-auto max-h-[18rem] max-w-[32rem] min-w-[20rem] h-full w-fit object-cover rounded-lg">
                     <div v-else style="all: inherit;">
                         <img src="/disable.png" alt="" class="w-10">
                         <b>Image Unavailable</b>
