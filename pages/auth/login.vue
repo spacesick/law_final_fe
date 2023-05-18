@@ -1,9 +1,10 @@
 <template>
   <div class="flex items-center justify-center w-full p-2">
     <form
+      ref="form"
       class="block p-6 bg-white border border-gray-200 rounded-lg shadow md:w-96 w-3/4"
     >
-      <h1 class="font-bold text-lg text-blue-700 text-xl">Login</h1>
+      <h1 class="font-bold text-lg text-blue-700">Login</h1>
       <div class="flex flex-col gap-4 mt-5">
         <CInput v-model="username" v-bind="inputData[0]" />
         <CInput v-model="password" v-bind="inputData[1]" />
@@ -45,6 +46,7 @@ export default {
   },
   data() {
     return {
+      username: '',
       email: '',
       password: '',
       inputData: [
@@ -53,12 +55,14 @@ export default {
           type: 'text',
           placeholder: 'mrhacka',
           val: '',
+          required: true
         },
         {
           label: 'Password',
           type: 'password',
           placeholder: '********',
           val: '',
+          required: true
         },
       ],
     }
@@ -68,13 +72,10 @@ export default {
       setToken: 'auth/setToken',
     }),
     submitForm: async function () {
-      if (
-        !this.username ||
-        !this.password
-      ) {
+      if (!this.$refs.form.checkValidity()) {
         // remove alert on prod
         alert('gagal')
-        return false
+        return
       }
 
       const res = await this.$axios.$post('http://34.28.48.143/api/token/', {

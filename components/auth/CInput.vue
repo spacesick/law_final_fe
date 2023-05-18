@@ -6,7 +6,7 @@
     <input
       :value="value"
       :placeholder="placeholder"
-      required
+      :required="required"
       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
       :type="type"
       @input="$emit('input', $event.target.value)"
@@ -16,6 +16,6 @@
 
 <script>
 export default {
-  props: ['label', 'type', 'placeholder', 'value'],
+  props: ['label', 'type', 'placeholder', 'value', 'required'],
 }
 </script>
