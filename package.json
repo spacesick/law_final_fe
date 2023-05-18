@@ -16,6 +16,8 @@
     "@nuxtjs/axios": "^5.13.6",
     "core-js": "^3.25.3",
     "nuxt": "^2.15.8",
+    "tailwindcss": "^3.3.2",
+    "tw-elements": "^1.0.0-beta2",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10"

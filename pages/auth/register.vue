@@ -1,11 +1,14 @@
 <template>
   <div class="flex items-center justify-center w-full p-2">
     <form
+      ref="form"
       class="block p-6 bg-white border border-gray-200 rounded-lg shadow md:w-96 w-3/4"
     >
       <h1 class="font-bold text-lg text-blue-700 text-xl">Create Account</h1>
       <div class="flex flex-col gap-4 mt-5">
         <CInput v-model="email" v-bind="inputData[0]" />
+        <CInput v-model="first_name" v-bind="inputData[4]" />
+        <CInput v-model="last_name" v-bind="inputData[5]" />
         <CInput v-model="username" v-bind="inputData[1]" />
         <CInput v-model="password" v-bind="inputData[2]" />
         <CInput v-model="confirmPassword" v-bind="inputData[3]" />
@@ -27,7 +30,6 @@
 import { mapActions } from 'vuex'
 import CInput from '~/components/auth/CInput.vue'
 import { parseJwt } from '~/store/auth'
-import validateEmail from '~/utils/validateEmail'
 
 export default {
   components: {
@@ -52,30 +54,50 @@ export default {
       username: '',
       password: '',
       confirmPassword: '',
+      first_name: '',
+      last_name: '',
       inputData: [
         {
           label: 'Email',
           type: 'email',
           placeholder: 'name@gmail.com',
           val: '',
+          required: true
         },
         {
           label: 'Username',
           type: 'text',
           placeholder: 'mrhacka',
           val: '',
+          required: true
         },
         {
           label: 'Password',
           type: 'password',
           placeholder: '********',
           val: '',
+          required: true
         },
         {
           label: 'Confirm Password',
           type: 'password',
           placeholder: '********',
           val: '',
+          required: true
+        },
+        {
+          label: 'First Name',
+          type: 'text',
+          placeholder: 'jake',
+          val: '',
+          required: false
+        },
+        {
+          label: 'Last Name',
+          type: 'text',
+          placeholder: 'paul',
+          val: '',
+          required: false
         },
       ],
     }
@@ -85,10 +107,7 @@ export default {
       setToken: 'auth/setToken',
     }),
     submitForm: async function () {
-      if (
-        !validateEmail(this.email) ||
-        !this.username ||
-        !this.password ||
+      if (!this.$refs.form.checkValidity() ||
         !(this.password === this.confirmPassword)
       ) {
         // remove alert on prod
