@@ -1,13 +1,22 @@
 <template>
     <div class="m-auto text-center w-fit">
-        <h1 class="font-semibold text-lg">Car List</h1>
+        <div class="flex flex-row-reverse justify-between items-center">
+            <h1 class="font-semibold text-lg flex-1 text-center m-0">Car List</h1>
+            <div class="ml-auto absolute">
+                <nuxt-link
+                    to="/car/add"
+                    class="border-2 border-blue-500 bg-blue-400 rounded-lg shadow-md py-2 px-3 text-right m-0 font-bold hover:text-blue-700">
+                    <b class="text-xl">+</b> Add car
+                </nuxt-link>
+            </div>
+        </div>
         <p v-if="error" class="bg-red-300 font-light p-2 my-[12px] text-left">{{ error }}</p>
         <div v-if="productTable" class="flex flex-col gap-4 py-4 justify-center">
             <div v-for="(product) in products" :key="product.id" class="border-2 rounded-md shadow-lg px-4 py-6 flex flex-col md:flex-row text-left gap-8 transition-all hover:-translate-y-1">
                 <nuxt-link
                     :to="'/car/'+product.id"
                     class="max-w-[32rem] flex-1 flex flex-col justify-center items-center">
-                    <img v-if="product.image_url" :src="product.image_url" class="m-auto max-h-[18rem] max-w-[32rem] h-full w-fit object-cover rounded-lg">
+                    <img v-if="product.image_url" :src="product.image_url" class="m-auto max-h-[18rem] max-w-[32rem] min-w-[20rem] h-full w-fit object-cover rounded-lg">
                     <div v-else style="all: inherit;">
                         <img src="/disable.png" alt="" class="w-10">
                         <b>Image Unavailable</b>

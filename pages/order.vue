@@ -23,7 +23,7 @@
                         <td>
                             <nuxt-link
                                 :to="'/car/'+order.product_id">
-                                <img :src="order.image_url" :alt="order.vehicle_name" class="w-full max-h-[80rem] m-auto object-cover">
+                                <img :src="order.image_url" :alt="order.vehicle_name" class="w-full min-w-[8rem] max-h-[14rem] m-auto object-cover">
                             </nuxt-link>
                         </td>
                         <td>{{ order.orderer }}</td>

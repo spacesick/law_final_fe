@@ -1,6 +1,6 @@
 <template>
 <div class="flex justify-center">
-    <div class="text-center w-full">
+    <div class="m-auto text-center w-full">
         <h1 class="font-semibold text-lg">Transaction List</h1>
         <p v-if="error" class="bg-red-300 font-light p-2 my-[12px] text-left">{{ error }}</p>
         <table v-if="transactionTable" class="content-table hidden md:table mx-auto border-collapse my-[12px] rounded-t-md text-sm max-w-[60rem] w-5/6 overflow-hidden shadow-md">
@@ -70,6 +70,7 @@
                 </tr>
             </tbody>
         </table>
+        <p v-else class="bg-red-300 font-light p-2 my-[12px] text-left m-auto w-fit">Could not fetch list of Transactions.</p>
     </div>
 </div>
 </template>
