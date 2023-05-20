@@ -24,7 +24,7 @@
                     <td>{{ transaction.amount }}</td>
                     <td>{{ transaction.status }}</td>
                     <td>
-                        <div class="flex flex-col md:flex-row justify-center gap-3">
+                        <div v-if="transaction.receiver == $store.state.auth.username" class="flex flex-col md:flex-row justify-center gap-3">
                             <button class="w-8 h-auto" title="Confirm" @click="confirmTransaction(index)"><img src="/MaterialSymbolsCheckCircle.svg" alt="check" class="w-full h-full"></button>
                             <button class="w-8 h-auto" title="Reject" @click="rejectTransaction(index)"><img src="/CharmCircleCross.svg" alt="check" class="w-full h-full"></button>
                             <button class="w-8 h-auto" title="Delete" @click="deleteTransaction(index)"><img src="/MaterialSymbolsDeleteForever.svg" alt="check" class="w-full h-full"></button>
@@ -61,7 +61,7 @@
                         </div>
                     </td>
                     <td>
-                        <div class="flex flex-col md:flex-row justify-center gap-3">
+                        <div v-if="transaction.receiver == $store.state.auth.username" class="flex flex-col md:flex-row justify-center gap-3">
                             <button class="w-8 h-auto" title="Confirm" @click="confirmTransaction(index)"><img src="/MaterialSymbolsCheckCircle.svg" alt="check" class="w-full h-full"></button>
                             <button class="w-8 h-auto" title="Reject" @click="rejectTransaction(index)"><img src="/CharmCircleCross.svg" alt="check" class="w-full h-full"></button>
                             <button class="w-8 h-auto" title="Delete" @click="deleteTransaction(index)"><img src="/MaterialSymbolsDeleteForever.svg" alt="check" class="w-full h-full"></button>
@@ -91,7 +91,7 @@ export default {
     },
     data() {
         return {
-            error: this.propError,
+            error: '',
             transactionTable: false,    // conditional for displaying html component
             transactions: []    // need to initialize so updating values work
         }
@@ -109,7 +109,12 @@ export default {
         },
     },
     beforeMount() {
-        fetch(process.env.TRANSACTION_ENDPOINT) // change to api endpoint (ext ip)
+        console.log(this.$store.state.auth.username)
+        fetch(process.env.TRANSACTION_ENDPOINT, {
+            headers: {
+                'Authorization': 'Bearer ' + this.$store.state.auth.token
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 this.transactionTable = true
@@ -120,7 +125,12 @@ export default {
     },
     methods: {
         deleteTransaction(index) {
-            axios.delete(process.env.TRANSACTION_ENDPOINT)
+            axios.delete(process.env.TRANSACTION_ENDPOINT, null,
+            {
+                headers: {
+                    'Authorization': 'Bearer ' + this.$store.state.auth.token
+                }
+            })
                 .then(response => {
                     this.transactions.splice(index, 1);
                 }).catch(() => {

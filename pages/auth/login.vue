@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center w-full p-2">
+  <div class="flex flex-col items-center justify-center w-full p-2">
     <form
       ref="form"
       class="block p-6 bg-white border border-gray-200 rounded-lg shadow md:w-96 w-3/4"
@@ -19,6 +19,7 @@
         <span>Belum punya akun? <router-link :to="{ path: '/auth/register'}" class="text-blue-600 hover:text-blue-700">Daftar</router-link></span>
       </div>
     </form>
+    <p v-if="error" class="bg-red-300 font-light p-2 my-[12px] text-left">{{ error }}</p>
   </div>
 </template>
 
@@ -65,26 +66,32 @@ export default {
           required: true
         },
       ],
+      error: '',
     }
   },
   methods: {
     ...mapActions({
       setToken: 'auth/setToken',
+      setUsername: 'auth/setUsername'
     }),
     submitForm: async function () {
       if (!this.$refs.form.checkValidity()) {
         // remove alert on prod
-        alert('gagal')
+        this.error = "Invalid form"
         return
       }
 
-      const res = await this.$axios.$post('http://34.28.48.143/api/token/', {
+      await this.$axios.$post('http://34.28.48.143/auth/token/', {
         username: this.username,
         password: this.password
+      }).then((res) => {
+        this.setToken(res.access)
+        this.setUsername(res.username)
+        this.$router.push('/')
+      }).catch((e) => {
+        this.error = e
+        console.log(this.error)
       })
-
-      this.setToken(res.access)
-      this.$router.push('/')
     }
   },
 

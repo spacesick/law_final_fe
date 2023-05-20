@@ -115,7 +115,7 @@ export default {
         return false
       }
 
-      const res = await this.$axios.$post('http://34.28.48.143/api/register/', {
+      const res = await this.$axios.$post('http://34.28.48.143/auth/register/', {
         email: this.email,
         username: this.username,
         password: this.password,

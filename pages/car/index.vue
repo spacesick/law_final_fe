@@ -1,5 +1,5 @@
 <template>
-    <div class="m-auto text-center w-fit">
+    <div class="m-auto text-center w-fit min-w-[20rem]">
         <div class="flex flex-row-reverse justify-between items-center">
             <h1 class="font-semibold text-lg flex-1 text-center m-0">Car List</h1>
             <div class="ml-auto absolute">
