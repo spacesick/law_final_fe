@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import socket from '../socket';
+import { parseJwt } from '~/store/auth';
 import AppHeader from '~/components/universal/AppHeader.vue';
 
 export default {
@@ -14,8 +16,34 @@ export default {
   },
   computed: {
     token() {
-      return this.$store.state.auth.token
+      return this.$store.state.auth.token;
     },
   },
-}
+
+  created() {
+    const token = this.$store.state.auth.token;
+    
+    if (token) this.connectSocket(token);
+
+    this.$store.subscribeAction((action, state) => {
+      if (action.type === 'auth/setToken') {
+        this.connectSocket(action.payload);
+      } else if (action.type === 'auth/removeToken') {
+        socket.disconnect();
+      }
+    });
+  },
+  methods: {
+    connectSocket(token) {
+      const parsedToken = parseJwt(token);
+      socket.auth = {
+        userId: parsedToken.user_id,
+        username: parsedToken.username,
+      };
+      socket.userId = parsedToken.user_id;
+      socket.username = parsedToken.username;
+      socket.connect();
+    },
+  },
+};
 </script>
