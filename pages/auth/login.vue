@@ -78,7 +78,7 @@ export default {
         return
       }
 
-      const res = await this.$axios.$post('http://34.28.48.143/api/token/', {
+      const res = await this.$axios.$post('http://34.28.48.143/auth/token/', {
         username: this.username,
         password: this.password
       })
