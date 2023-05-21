@@ -95,7 +95,7 @@ export default {
         },
     },
     beforeMount() {
-        fetch(process.env.PRODUCT_ENDPOINT + '/product/?format=json') // change to api endpoint (ext ip)
+        fetch(process.env.PRODUCT_ENDPOINT + 'product/?format=json') // change to api endpoint (ext ip)
             .then(response => response.json())
             .then(data => {
                 this.productTable = true
@@ -103,34 +103,6 @@ export default {
             }).catch(() => {
                 this.productTable = false
             })
-    },
-    methods: {
-        deleteProduct(index) {
-            axios.delete(process.env.PRODUCT_ENDPOINT)
-                .then(response => {
-                    this.products.splice(index, 1);
-                }).catch(() => {
-                    this.error = 'Delete Error'
-                })
-        },
-        rejectProduct(index) {
-            const id = this.products[index].id
-            axios.put(process.env.PRODUCT_ENDPOINT + '/reject?id=' + id)
-                .then(response => {
-                    this.products[index].status = "REJECTED"
-                }).catch(() => {
-                    this.error = 'Reject Error'
-                })
-        },
-        confirmProduct(index) {
-            const id = this.products[index].id
-            axios.put(process.env.PRODUCT_ENDPOINT + '/confirm?id=' + id)
-                .then(response => {
-                    this.products[index].status = "CONFIRMED";
-                }).catch(() => {
-                    this.error = 'Confirm Error'
-                })
-        },
     }
 }
 </script>
