@@ -1,7 +1,6 @@
 <template>
     <form class="m-auto text-center max-w-[60rem] px-2 flex flex-col gap-2">
         <h1 class="font-semibold text-lg">Add Car</h1>
-        <p v-if="error" class="bg-red-300 font-light p-2 my-[12px] text-left">{{ error }}</p>
         <div class="text-left">
             <label class="flex flex-col gap-2 my-2 text-sm font-medium text-gray-900">Vehicle Image
                 <img :src="imageUrl" alt="">
@@ -26,6 +25,7 @@
             <div class="text-center py-4">
                 <button class="py-2 px-5 font-bold bg-green-500 border-4 border-green-400 rounded-md" title="Add" @click.prevent="addProduct">Add Car</button>
             </div>
+            <p v-if="error" class="bg-red-300 font-light p-2 my-[12px] text-left">{{ error }}</p>
         </div>
     </form>
 </template>
@@ -58,8 +58,6 @@ export default {
             imageUrl: null
         }
     },
-    computed: {
-    },
     methods: {
         onImageChange(event) {
             const file = event.target.files[0];
@@ -87,7 +85,7 @@ export default {
             formData.append('price', this.price);
             formData.append('description', this.description);
             formData.append('availability', this.availability);
-            axios.post(process.env.PRODUCT_ENDPOINT + '/product/', formData, {
+            axios.post(process.env.PRODUCT_ENDPOINT + 'product/', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },

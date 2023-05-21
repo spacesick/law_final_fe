@@ -1,18 +1,26 @@
 const tokenKey = 'lawToken'
+const usernameKey = 'usernameToken'
 
 export const state = () => ({
   token: localStorage.getItem(tokenKey) || null,
+  username: localStorage.getItem(usernameKey) || null,
 })
 
 export const getters = {
   GET_TOKEN(state) {
     return state.token
   },
+  GET_USERNAME(state) {
+    return state.username
+  }
 }
 
 export const mutations = {
   SET_TOKEN(state, payload) {
     state.token = payload
+  },
+  SET_USERNAME(state, payload) {
+    state.username = payload
   },
 }
 
@@ -27,6 +35,14 @@ export const actions = {
   removeToken({ commit }) {
     localStorage.removeItem(tokenKey)
     commit('SET_TOKEN', null)
+  },
+  setUsername({ commit }, payload) {
+    localStorage.setItem(usernameKey, payload)
+    commit('SET_USERNAME', payload)
+  },
+  removeUsername({ commit }) {
+    localStorage.removeItem(usernameKey)
+    commit('SET_USERNAME', null)
   },
 }
 

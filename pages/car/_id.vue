@@ -103,7 +103,7 @@ export default {
         this.finish_date = new Date().toISOString().split('T')[0];
     },
     beforeMount() {
-        fetch(process.env.PRODUCT_ENDPOINT + '/product/'+this.$route.params.id+'?format=json') // change to api endpoint (ext ip)
+        fetch(process.env.PRODUCT_ENDPOINT + 'product/'+this.$route.params.id+'?format=json') // change to api endpoint (ext ip)
             .then(response => response.json())
             .then(data => {
                 this.productTable = true
@@ -114,7 +114,7 @@ export default {
     },
     methods: {
         orderProduct(index) {
-            axios.post(process.env.PRODUCT_ENDPOINT + '/order/',
+            axios.post(process.env.PRODUCT_ENDPOINT + 'order/',
                 {   
                     product_id: this.$route.params.id,
                     start_date: this.start_date,
