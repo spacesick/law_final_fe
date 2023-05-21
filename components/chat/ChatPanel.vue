@@ -2,10 +2,31 @@
   <div
     class="absolute bottom-4 right-4 z-10 rounded-md bg-gray-50 shadow-lg border border-gray-300 transition-all"
   >
-
     <div class="flex h-96 divide-x divide-gray-300">
       <div
-        v-if="messagedUsers.length"
+        v-if="loading"
+        class="w-64 flex flex-col justify-center items-center px-1 py-3 relative overflow-y-auto"
+      >
+        <svg
+          class="animate-spin w-6 h-6"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25 stroke-black fill-none"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke-width="4"
+          ></circle>
+          <path
+            class="opacity-75"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
+      </div>
+      <div
+        v-else-if="messagedUsers.length"
         class="w-64 flex flex-col px-1 py-3 relative overflow-y-auto"
       >
         <UserPreview
@@ -49,6 +70,7 @@ export default {
     return {
       selectedUserPreview: null,
       messagedUsers: [],
+      loading: true,
     };
   },
   created() {
@@ -79,6 +101,8 @@ export default {
         if (a.username < b.username) return -1;
         return a.username > b.username ? 1 : 0;
       });
+
+      this.loading = false;
     });
 
     socket.on('new messaged user', (messagedUser) => {
