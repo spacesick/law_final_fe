@@ -1,8 +1,39 @@
 <template>
   <div
-    class="absolute bottom-4 right-4 z-10 rounded-md bg-gray-50 shadow-lg border border-gray-300 transition-all"
+    class="absolute bottom-4 z-10 rounded-md bg-gray-50 shadow-lg border border-gray-300 transition-all"
+    :class="[opened ? 'right-4' : 'right-0']"
   >
-    <div class="flex h-96 divide-x divide-gray-300">
+    <div
+      class="absolute py-4 z-20 -left-8 px-1 bottom-2 bg-gray-50 border-gray-300 hover:bg-slate-200 transition-all border-l border-t border-b rounded-l-md"
+      @click="togglePanel()"
+    >
+      <svg
+        v-if="opened"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        class="w-6 h-6 fill-gray-400 rounded-md"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+          clip-rule="evenodd"
+        />
+      </svg>
+      <svg
+        v-else
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        class="w-6 h-6 p-1 fill-gray-400 rounded-md"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M2 10c0-3.967 3.69-7 8-7 4.31 0 8 3.033 8 7s-3.69 7-8 7a9.165 9.165 0 01-1.504-.123 5.976 5.976 0 01-3.935 1.107.75.75 0 01-.584-1.143 3.478 3.478 0 00.522-1.756C2.979 13.825 2 12.025 2 10z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+
+    <div v-if="opened" class="flex h-96 divide-x divide-gray-300">
       <div
         v-if="loading"
         class="w-64 flex flex-col justify-center items-center px-1 py-3 relative overflow-y-auto"
@@ -71,6 +102,7 @@ export default {
       selectedUserPreview: null,
       messagedUsers: [],
       loading: true,
+      opened: true,
     };
   },
   created() {
@@ -151,6 +183,9 @@ export default {
       } else {
         this.selectedUserPreview = null;
       }
+    },
+    togglePanel() {
+      this.opened = !this.opened;
     },
   },
 };
