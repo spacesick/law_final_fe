@@ -1,6 +1,6 @@
 export default {
   env: {
-    TRANSACTION_ENDPOINT: 'http://34.132.253.74/transaction/',
+    TRANSACTION_ENDPOINT: 'http://34.28.35.168/transaction/',
     PRODUCT_ENDPOINT: 'http://localhost:8000'
   },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
