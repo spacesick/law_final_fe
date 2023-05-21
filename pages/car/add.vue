@@ -58,8 +58,6 @@ export default {
             imageUrl: null
         }
     },
-    computed: {
-    },
     methods: {
         onImageChange(event) {
             const file = event.target.files[0];
@@ -87,7 +85,7 @@ export default {
             formData.append('price', this.price);
             formData.append('description', this.description);
             formData.append('availability', this.availability);
-            axios.post(process.env.PRODUCT_ENDPOINT + '/product/', formData, {
+            axios.post(process.env.PRODUCT_ENDPOINT + 'product/', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
