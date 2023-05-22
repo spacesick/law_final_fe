@@ -132,14 +132,14 @@
             },
         },
         beforeMount() {
-            fetch(process.env.PRODUCT_ENDPOINT+'/order/') // change to api endpoint (ext ip)
+            fetch(process.env.PRODUCT_ENDPOINT+'order/') // change to api endpoint (ext ip)
                 .then(response => response.json())
                 .then(data => {
                     this.orderTable = true
                     this.orders = data
                     // Iterate over each order and fetch product image
                     const productPromises = this.orders.map(order => {
-                    return fetch(process.env.PRODUCT_ENDPOINT + '/product/' + order.product_id)
+                    return fetch(process.env.PRODUCT_ENDPOINT + 'product/' + order.product_id)
                         .then(response => response.json())
                         .then(data => {
                             // Assuming the productData contains the image URL

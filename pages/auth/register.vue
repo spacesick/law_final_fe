@@ -122,7 +122,7 @@ export default {
       }
 
       const res = await this.$axios.$post(
-        'http://34.28.48.143/auth/register/',
+        process.env.AUTH_ENDPOINT + 'register/',
         {
           email: this.email,
           username: this.username,
