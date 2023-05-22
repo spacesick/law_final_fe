@@ -37,7 +37,11 @@
         </Fragment>
       </div>
       <Fragment v-if="tokenExist" class="flex-1">
-        <div id="navbar-default" class="!visible hidden w-full md:block md:w-auto" data-te-collapse-item>
+        <div
+          id="navbar-default"
+          class="!visible hidden w-full md:block md:w-auto"
+          data-te-collapse-item
+        >
           <ul
             class="font-bold w-full md:w-fit ml-auto flex flex-col justify-end p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white"
           >
@@ -62,13 +66,13 @@
                 >About</nuxt-link
               >
             </li>
-            <li>
-              <a
-              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 hover:cursor-pointer"
-              @click="setToken">
-                Mutate
-              </a>
-            </li>
+            <!-- <li>
+                <a
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 hover:cursor-pointer"
+                @click="setToken">
+                  Mutate
+                </a>
+              </li> -->
             <li>
               <nuxt-link
                 to="/transaction"
@@ -78,8 +82,9 @@
             </li>
             <li>
               <a
-              class="block py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 hover:cursor-pointer"
-              @click="logout">
+                class="block py-2 pl-3 pr-4 text-red-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 hover:cursor-pointer"
+                @click="logout"
+              >
                 Logout
               </a>
             </li>
@@ -91,34 +96,34 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import { Collapse, Ripple, initTE } from 'tw-elements'
+import { mapActions } from 'vuex';
+import { Collapse, Ripple, initTE } from 'tw-elements';
 
 export default {
   name: 'AppHeader',
   props: {
-    'tokenExist': {
+    tokenExist: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   computed: {
     token() {
-      return this.$store.state.auth.token
+      return this.$store.state.auth.token;
     },
   },
-  mounted: (() => {
-    initTE({Collapse, Ripple})
-  }),
+  mounted: () => {
+    initTE({ Collapse, Ripple });
+  },
   methods: {
     ...mapActions({
       setToken: 'auth/setToken',
       removeToken: 'auth/removeToken',
     }),
     logout() {
-      this.removeToken()
-      this.$router.push('/auth/login')
+      this.removeToken();
+      this.$router.push('/auth/login');
     },
   },
-}
+};
 </script>

@@ -1,8 +1,14 @@
 export default {
+  // server: {
+  //   port: 3001,
+  // },
+
   env: {
-    TRANSACTION_ENDPOINT: 'http://34.28.35.168/transaction/',
+    ORCHESTRATOR_ENDPOINT: 'http://34.172.19.169/orchestrator/',
+    // ORCHESTRATOR_ENDPOINT: 'http://localhost:3000/orchestrator/',
+    TRANSACTION_ENDPOINT: 'http://34.172.19.169/transaction/',
     PRODUCT_ENDPOINT: 'http://35.239.94.128/',
-    AUTH_ENDPOINT: 'http://34.28.48.143/auth/',
+    AUTH_ENDPOINT: 'http://34.172.19.169/auth/',
   },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -40,7 +46,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -57,4 +63,4 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-}
+};
