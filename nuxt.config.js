@@ -4,8 +4,8 @@ export default {
   },
 
   env: {
-    // ORCHESTRATOR_ENDPOINT: 'http://34.172.19.169/orchestrator/',
-    ORCHESTRATOR_ENDPOINT: 'http://localhost:3000/orchestrator/',
+    ORCHESTRATOR_ENDPOINT: 'http://34.172.19.169/orchestrator/',
+    // ORCHESTRATOR_ENDPOINT: 'http://localhost:3000/orchestrator/',
     TRANSACTION_ENDPOINT: 'http://34.172.19.169/transaction/',
     PRODUCT_ENDPOINT: 'http://35.239.94.128/',
     AUTH_ENDPOINT: 'http://34.172.19.169/auth/',
