@@ -60,8 +60,14 @@
         v-else-if="messagedUsers.length"
         class="w-64 flex flex-col px-1 py-3 relative overflow-y-auto"
       >
+        <input
+          v-model="filterInput"
+          placeholder="Search for someone"
+          class="relative block w-full appearance-none px-4 py-2 mb-2 -mt-1 rounded-full text-sm font-normal text-gray-900 placeholder-gray-400 bg-gray-100 focus:z-10 focus:border-none focus:outline-none"
+          type="text"
+        />
         <UserPreview
-          v-for="messagedUser in messagedUsers"
+          v-for="messagedUser in filteredMessagedUsers"
           :key="messagedUser.username"
           :user="messagedUser"
           :selected="selectedUserPreview === messagedUser"
@@ -101,9 +107,19 @@ export default {
     return {
       selectedUserPreview: null,
       messagedUsers: [],
+      filterInput: '',
       loading: true,
       opened: true,
     };
+  },
+  computed: {
+    filteredMessagedUsers() {
+      return this.messagedUsers.filter((messagedUser) => {
+        return messagedUser.username
+          .toLowerCase()
+          .includes(this.filterInput.toLowerCase());
+      });
+    },
   },
   created() {
     const initProps = (user) => {
