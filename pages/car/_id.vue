@@ -160,7 +160,7 @@ export default {
             finish_date: this.finish_date,
             receiver,
             orderer,
-            amount,
+            amount: Math.ceil(amount),
           },
           {
             headers: {
