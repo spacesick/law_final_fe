@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute bottom-4 z-10 rounded-md bg-gray-50 shadow-lg border border-gray-300 transition-all"
+    class="fixed bottom-4 z-10 rounded-md bg-gray-50 shadow-lg border border-gray-300 transition-all"
     :class="[opened ? 'right-4' : 'right-0']"
   >
     <div
