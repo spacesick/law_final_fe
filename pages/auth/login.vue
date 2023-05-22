@@ -16,7 +16,14 @@
         Login
       </button>
       <div class="flex justify-center text-sm mt-3">
-        <span>Belum punya akun? <router-link :to="{ path: '/auth/register'}" class="text-blue-600 hover:text-blue-700">Daftar</router-link></span>
+        <span
+          >Belum punya akun?
+          <router-link
+            :to="{ path: '/auth/register' }"
+            class="text-blue-600 hover:text-blue-700"
+            >Daftar</router-link
+          ></span
+        >
       </div>
     </form>
     <p v-if="error" class="bg-red-300 font-light p-2 my-[12px] text-left">{{ error }}</p>
@@ -24,21 +31,21 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import { parseJwt } from '~/store/auth'
-import CInput from '~/components/auth/CInput.vue'
+import { mapActions } from 'vuex';
+import { parseJwt } from '~/store/auth';
+import CInput from '~/components/auth/CInput.vue';
 
 export default {
   components: {
     CInput,
   },
-  beforeRouteEnter (to, from, next) {
+  beforeRouteEnter(to, from, next) {
     if (localStorage.getItem('lawToken')) {
       const jwtPayload = parseJwt(localStorage.getItem('lawToken'));
-      if (jwtPayload.exp < Date.now()/1000) {
+      if (jwtPayload.exp < Date.now() / 1000) {
         // token expired
         localStorage.removeItem('lawToken');
-        next()
+        next();
       }
       next('/');
     } else {
@@ -51,23 +58,23 @@ export default {
       email: '',
       password: '',
       inputData: [
-      {
+        {
           label: 'Username',
           type: 'text',
           placeholder: 'mrhacka',
           val: '',
-          required: true
+          required: true,
         },
         {
           label: 'Password',
           type: 'password',
           placeholder: '********',
           val: '',
-          required: true
+          required: true,
         },
       ],
       error: '',
-    }
+    };
   },
   methods: {
     ...mapActions({
@@ -92,8 +99,7 @@ export default {
         this.error = e
         console.log(this.error)
       })
-    }
+    },
   },
-
-}
+};
 </script>

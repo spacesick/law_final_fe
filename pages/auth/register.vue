@@ -4,7 +4,7 @@
       ref="form"
       class="block p-6 bg-white border border-gray-200 rounded-lg shadow md:w-96 w-3/4"
     >
-      <h1 class="font-bold text-lg text-blue-700 text-xl">Create Account</h1>
+      <h1 class="font-bold text-blue-700 text-xl">Create Account</h1>
       <div class="flex flex-col gap-4 mt-5">
         <CInput v-model="email" v-bind="inputData[0]" />
         <CInput v-model="first_name" v-bind="inputData[4]" />
@@ -20,28 +20,35 @@
         Submit
       </button>
       <div class="flex justify-center text-sm mt-3">
-        <span>Sudah punya akun? <router-link :to="{ path: '/auth/login'}" class="text-blue-600 hover:text-blue-700">Login</router-link></span>
+        <span
+          >Sudah punya akun?
+          <router-link
+            :to="{ path: '/auth/login' }"
+            class="text-blue-600 hover:text-blue-700"
+            >Login</router-link
+          ></span
+        >
       </div>
     </form>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import CInput from '~/components/auth/CInput.vue'
-import { parseJwt } from '~/store/auth'
+import { mapActions } from 'vuex';
+import CInput from '~/components/auth/CInput.vue';
+import { parseJwt } from '~/store/auth';
 
 export default {
   components: {
     CInput,
   },
-  beforeRouteEnter (to, from, next) {
+  beforeRouteEnter(to, from, next) {
     if (localStorage.getItem('lawToken')) {
       const jwtPayload = parseJwt(localStorage.getItem('lawToken'));
-      if (jwtPayload.exp < Date.now()/1000) {
-        // token expired
+      if (jwtPayload.exp < Date.now() / 1000) {
+        // Token has expired
         localStorage.removeItem('lawToken');
-        next()
+        next();
       }
       next('/');
     } else {
@@ -62,71 +69,72 @@ export default {
           type: 'email',
           placeholder: 'name@gmail.com',
           val: '',
-          required: true
+          required: true,
         },
         {
           label: 'Username',
           type: 'text',
           placeholder: 'mrhacka',
           val: '',
-          required: true
+          required: true,
         },
         {
           label: 'Password',
           type: 'password',
           placeholder: '********',
           val: '',
-          required: true
+          required: true,
         },
         {
           label: 'Confirm Password',
           type: 'password',
           placeholder: '********',
           val: '',
-          required: true
+          required: true,
         },
         {
           label: 'First Name',
           type: 'text',
           placeholder: 'jake',
           val: '',
-          required: false
+          required: false,
         },
         {
           label: 'Last Name',
           type: 'text',
           placeholder: 'paul',
           val: '',
-          required: false
+          required: false,
         },
       ],
-    }
+    };
   },
   methods: {
     ...mapActions({
       setToken: 'auth/setToken',
     }),
     submitForm: async function () {
-      if (!this.$refs.form.checkValidity() ||
+      if (
+        !this.$refs.form.checkValidity() ||
         !(this.password === this.confirmPassword)
       ) {
-        // remove alert on prod
-        alert('gagal')
-        return false
+        return false;
       }
 
-      const res = await this.$axios.$post(process.env.AUTH_ENDPOINT + 'register/', {
-        email: this.email,
-        username: this.username,
-        password: this.password,
-        first_name: '',
-        last_name: '',
-      })
-      // console.log(res)
+      const res = await this.$axios.$post(
+        process.env.AUTH_ENDPOINT + 'register/',
+        {
+          email: this.email,
+          username: this.username,
+          password: this.password,
+          first_name: '',
+          last_name: '',
+        }
+      );
 
-      this.setToken(res.token.access)
-      this.$router.push('/')
+      this.setToken(res.token.access);
+      this.$router.push('/');
     },
   },
-}
+};
 </script>
