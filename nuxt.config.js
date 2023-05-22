@@ -1,7 +1,7 @@
 export default {
-  server: {
-    port: 3001,
-  },
+  // server: {
+  //   port: 3001,
+  // },
 
   env: {
     ORCHESTRATOR_ENDPOINT: 'http://34.172.19.169/orchestrator/',
