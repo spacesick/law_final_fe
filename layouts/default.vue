@@ -2,7 +2,7 @@
   <div class="min-w-screen min-h-screen">
     <AppHeader :token-exist="token" />
     <nuxt />
-    <ChatPanel />
+    <ChatPanel :token-exist="token" />
   </div>
 </template>
 
