@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="tokenExist"
     class="fixed bottom-4 z-10 rounded-md bg-gray-50 shadow-lg border border-gray-300 transition-all"
     :class="[opened ? 'right-4' : 'right-0']"
   >
@@ -102,6 +103,12 @@ export default {
   components: {
     UserPreview,
     ChatBox,
+  },
+  props: {
+    tokenExist: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
