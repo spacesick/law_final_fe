@@ -34,6 +34,7 @@
             </div>
           </div>
         </li>
+        <li ref="bottom"></li>
       </ul>
     </div>
 
@@ -89,6 +90,12 @@ export default {
     isMessageBySelf(message) {
       return message.self === socket.username;
     },
+  },
+  mounted() {
+    this.$refs.bottom.scrollIntoView();
+  },
+  updated() {
+    this.$refs.bottom.scrollIntoView();
   },
   methods: {
     onSubmit() {
