@@ -2,6 +2,7 @@
   <div class="min-w-screen min-h-screen">
     <AppHeader :token-exist="token" />
     <nuxt />
+    <ChatPanel :token-exist="token" />
   </div>
 </template>
 
@@ -9,10 +10,12 @@
 import socket from '../socket';
 import { parseJwt } from '~/store/auth';
 import AppHeader from '~/components/universal/AppHeader.vue';
+import ChatPanel from '~/components/chat/ChatPanel.vue';
 
 export default {
   components: {
     AppHeader,
+    ChatPanel
   },
   computed: {
     token() {
