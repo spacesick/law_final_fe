@@ -5,8 +5,8 @@
       <p class="hidden tagline text-8xl col-span-3 text-center sm:inline md:text-9xl md:text-left md:col-span-1 sm:w-full w-[5ch] lg:w-full self-center">GET YOUR <span class="text-red-500">CAR</span> NOW.</p>
     </div>
     <div class="flex justify-center space-x-2 mt-12">
-      <button class="rounded-full py-4 px-10 bg-red-500 text-white text-xl font-medium hover:bg-red-600">Rent Car</button>
-      <button class="rounded-full py-4 px-10 bg-white text-red-500 border border-red-500 text-xl font-medium hover:bg-red-600 hover:text-white">My Order</button>
+      <nuxt-link to="/car" class="rounded-full py-4 px-10 bg-red-500 text-white text-xl font-medium hover:bg-red-600">Rent Car</nuxt-link>
+      <nuxt-link to="/order" class="rounded-full py-4 px-10 bg-white text-red-500 border border-red-500 text-xl font-medium hover:bg-red-600 hover:text-white">My Order</nuxt-link>
     </div>
     <ChatPanel />
   </div>
