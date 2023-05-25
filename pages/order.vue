@@ -34,9 +34,9 @@
                         <td>{{ order.grand_total }}</td>
                         <td>
                             <div class="flex flex-col md:flex-row justify-center gap-3">
-                                <button class="w-8 h-auto" title="Confirm" @click="confirmOrder(index)"><img src="/MaterialSymbolsCheckCircle.svg" alt="check" class="w-full h-full"></button>
-                                <button class="w-8 h-auto" title="Reject" @click="rejectOrder(index)"><img src="/CharmCircleCross.svg" alt="check" class="w-full h-full"></button>
-                                <button class="w-8 h-auto" title="Delete" @click="deleteOrder(index)"><img src="/MaterialSymbolsDeleteForever.svg" alt="check" class="w-full h-full"></button>
+                                <button class="w-8 h-auto" title="Confirm" @click="confirmOrder(index)"><img src="/check.svg" alt="check" class="w-full h-full"></button>
+                                <button class="w-8 h-auto" title="Reject" @click="rejectOrder(index)"><img src="/cross.svg" alt="check" class="w-full h-full"></button>
+                                <button class="w-8 h-auto" title="Delete" @click="deleteOrder(index)"><img src="/trash.svg" alt="check" class="w-full h-full"></button>
                             </div>
                         </td>
                     </tr>
@@ -73,9 +73,9 @@
                         </td>
                         <td>
                             <div class="flex flex-col md:flex-row justify-center gap-3">
-                                <button class="w-8 h-auto" title="Confirm" @click="confirmOrder(index)"><img src="/MaterialSymbolsCheckCircle.svg" alt="check" class="w-full h-full"></button>
-                                <button class="w-8 h-auto" title="Reject" @click="rejectOrder(index)"><img src="/CharmCircleCross.svg" alt="check" class="w-full h-full"></button>
-                                <button class="w-8 h-auto" title="Delete" @click="deleteOrder(index)"><img src="/MaterialSymbolsDeleteForever.svg" alt="check" class="w-full h-full"></button>
+                                <button class="w-8 h-auto" title="Confirm" @click="confirmOrder(index)"><img src="/check.svg" alt="check" class="w-full h-full"></button>
+                                <button class="w-8 h-auto" title="Reject" @click="rejectOrder(index)"><img src="/cross.svg" alt="check" class="w-full h-full"></button>
+                                <button class="w-8 h-auto" title="Delete" @click="deleteOrder(index)"><img src="/trash.svg" alt="check" class="w-full h-full"></button>
                             </div>
                         </td>
                     </tr>

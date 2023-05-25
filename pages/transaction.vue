@@ -75,7 +75,7 @@
                   @click="confirmTransaction(index)"
                 >
                   <img
-                    src="/MaterialSymbolsCheckCircle.svg"
+                    src="/check.svg"
                     alt="check"
                     class="w-full h-full"
                   />
@@ -86,7 +86,7 @@
                   @click="rejectTransaction(index)"
                 >
                   <img
-                    src="/CharmCircleCross.svg"
+                    src="/cross.svg"
                     alt="check"
                     class="w-full h-full"
                   />
@@ -97,7 +97,7 @@
                   @click="deleteTransaction(index)"
                 >
                   <img
-                    src="/MaterialSymbolsDeleteForever.svg"
+                    src="/trash.svg"
                     alt="check"
                     class="w-full h-full"
                   />
@@ -183,7 +183,7 @@
                   @click="confirmTransaction(index)"
                 >
                   <img
-                    src="/MaterialSymbolsCheckCircle.svg"
+                    src="/check.svg"
                     alt="check"
                     class="w-full h-full"
                   />
@@ -194,7 +194,7 @@
                   @click="rejectTransaction(index)"
                 >
                   <img
-                    src="/CharmCircleCross.svg"
+                    src="/cross.svg"
                     alt="check"
                     class="w-full h-full"
                   />
@@ -205,7 +205,7 @@
                   @click="deleteTransaction(index)"
                 >
                   <img
-                    src="/MaterialSymbolsDeleteForever.svg"
+                    src="/trash.svg"
                     alt="check"
                     class="w-full h-full"
                   />

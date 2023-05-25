@@ -2,7 +2,7 @@ export default {
   // server: {
   //   port: 3001,
   // },
-
+  
   env: {
     ORCHESTRATOR_ENDPOINT: 'http://34.172.19.169/orchestrator/',
     // ORCHESTRATOR_ENDPOINT: 'http://localhost:3000/orchestrator/',
@@ -47,6 +47,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/dotenv',
+    '@nuxtjs/svg'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
