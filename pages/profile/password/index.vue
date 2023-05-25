@@ -1,6 +1,6 @@
 <template>
     <div class="grid grid-cols-6 gap-4 pt-4">
-        <div class="flex md:flex-col ml-4 space-x-3 col-span-4 md:space-x-0 md:space-y-3 md:col-span-0">
+        <div class="flex md:flex-col ml-4 space-x-3 col-start-1 md:col-start-2 col-span-4 md:space-x-0 md:space-y-3 md:col-span-0">
             <nuxt-link to="/profile" class="md:text-lg font-light">Edit Profile</nuxt-link>
             <nuxt-link to="/profile/password" class="md:text-lg font-light font-semibold">Change Password</nuxt-link>
         </div>
