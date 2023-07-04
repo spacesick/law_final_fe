@@ -2,6 +2,8 @@
 
 This is the frontend portion of the final group project for CSCE604271 (Web Application & Services): An implementation of an e-commerce web app for renting vehicles that utilizes orchestration of microservices.
 
+![07 42 58 chrome](https://github.com/spacesick/vehicle-rental-nuxt/assets/70625944/8d0c8786-e4ce-41ea-9fda-7c971aac6304)
+
 ## Group project members
 
 - Fathan Muhammad
