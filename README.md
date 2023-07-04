@@ -1,4 +1,14 @@
-# law_final_fe
+# Vehicle Rental App
+
+This is the frontend portion of the final group project for CSCE604271 (Web Application & Services): An implementation of an e-commerce web app for renting vehicles that utilizes orchestration of microservices.
+
+## Group project members
+
+- Fathan Muhammad
+- Vincent Yovian (me!)
+- Rizky Nurfaizi Widyanto
+- Elfraera Winson Barry
+- Bima Bagas Raditya
 
 ## Build Setup
 
