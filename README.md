@@ -2,6 +2,10 @@
 
 This is the frontend portion of the final group project for CSCE604271 (Web Application & Services): An implementation of an e-commerce web app for renting vehicles that utilizes orchestration of microservices.
 
+See my implementation for the backend of its chatting service [here](https://github.com/spacesick/socketio-messaging).
+
+See the source code for the service orchestrator of this web app [here](https://github.com/mune-kyun/law_final_orchestrator).
+
 ![07 42 58 chrome](https://github.com/spacesick/vehicle-rental-nuxt/assets/70625944/8d0c8786-e4ce-41ea-9fda-7c971aac6304)
 
 ## Group project members
