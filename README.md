@@ -2,7 +2,7 @@
 
 This is the frontend portion of the final group project for CSCE604271 (Web Application & Services): An implementation of an e-commerce web app for renting vehicles that utilizes orchestration of microservices.
 
-See my implementation of the chatting service [here](https://github.com/spacesick/socketio-messaging).
+See my implementation of the private chatting service [here](https://github.com/spacesick/socketio-messaging).
 
 See the source code for the service orchestrator of this web app [here](https://github.com/mune-kyun/law_final_orchestrator).
 
